@@ -39,4 +39,11 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private Instant birthday;
 
+    @Column(name = "confirm_code")
+    private String confirmCode;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    private State state;
+
 }
