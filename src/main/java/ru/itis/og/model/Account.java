@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -42,4 +43,21 @@ public class Account extends AbstractEntity {
 
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
+
+    @Column(name = "confirm_code")
+    private String confirmCode;
+
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false)
+    private State state;
+
+    @OneToMany(mappedBy = "following")
+    private Set<Subscription> followers;
+
+    @OneToMany(mappedBy = "follower")
+    private Set<Subscription> followings;
+
+    public enum State {
+        CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
+    }
 }
