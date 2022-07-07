@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = BirthdayValidator.class)
-public @interface ValidBirthday {
+public @interface Birthday {
     String message() default "birthday is invalid";
 
     Class<?>[] groups() default {};

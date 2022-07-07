@@ -1,10 +1,10 @@
 package ru.itis.og.service;
 
-import ru.itis.og.dto.request.SignUpForm;
-import ru.itis.og.dto.response.AccountDto;
+import ru.itis.og.dto.request.SignUpRequest;
+import ru.itis.og.dto.response.AccountResponse;
 
 public interface SignUpService {
-    AccountDto signUp(SignUpForm signUpForm);
+    AccountResponse signUp(SignUpRequest signUpRequest);
 
-    void checkConfirm(String confirmCode);
+    boolean checkConfirm(String confirmCode);
 }

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountDto {
+public class AccountResponse {
     private UUID id;
     private String firstname;
     private String lastname;
@@ -25,8 +25,8 @@ public class AccountDto {
     private Instant birthday;
     private Gender gender;
 
-    public static AccountDto from(Account account) {
-        return AccountDto.builder()
+    public static AccountResponse from(Account account) {
+        return AccountResponse.builder()
                 .id(account.getId())
                 .firstname(account.getFirstname())
                 .lastname(account.getLastname())
@@ -37,8 +37,8 @@ public class AccountDto {
                 .build();
     }
 
-    public static List<AccountDto> from(List<Account> accounts) {
-        return accounts.stream().map(AccountDto::from).collect(Collectors.toList());
+    public static List<AccountResponse> from(List<Account> accounts) {
+        return accounts.stream().map(AccountResponse::from).collect(Collectors.toList());
     }
 
 }

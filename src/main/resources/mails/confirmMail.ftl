@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Подтверждение регистрации</title>
+    <title>РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ СЂРµРіРёСЃС‚СЂР°С†РёРё</title>
     <style>
         .btn {
             display: inline-block;

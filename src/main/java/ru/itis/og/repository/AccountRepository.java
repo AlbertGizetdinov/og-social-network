@@ -6,7 +6,7 @@ import ru.itis.og.model.Account;
 import java.util.Optional;
 
 public interface AccountRepository extends JpaRepository<Account, String> {
-    Optional<Account> findAccountByEmail(String email);
 
     Optional<Account> findAccountByConfirmCode(String confirmCode);
+
 }

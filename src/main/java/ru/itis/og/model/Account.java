@@ -46,4 +46,8 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private State state;
 
+
+    public enum State {
+        CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
+    }
 }
