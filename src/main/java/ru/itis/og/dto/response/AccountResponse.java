@@ -5,30 +5,33 @@ import ru.itis.og.model.Account;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
+
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountResponse {
-
-    private String email;
-    private String lastname;
+    private UUID id;
     private String firstname;
+    private String lastname;
     private String nickname;
-    private String gender;
+    private String email;
     private Instant birthday;
+    private String gender;
 
     public static AccountResponse from(Account account) {
         return AccountResponse.builder()
-                .email(account.getEmail())
-                .lastname(account.getLastname())
+                .id(account.getId())
                 .firstname(account.getFirstname())
+                .lastname(account.getLastname())
                 .nickname(account.getNickname())
-                .gender(account.getGender().name())
+                .email(account.getEmail())
                 .birthday(account.getBirthday())
+                .gender(account.getGender().name())
                 .build();
     }
 
