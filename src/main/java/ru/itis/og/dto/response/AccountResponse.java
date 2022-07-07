@@ -1,9 +1,7 @@
 package ru.itis.og.dto.response;
 
-<<<<<<< src/main/java/ru/itis/og/dto/response/AccountResponse.java
 import lombok.*;
 import ru.itis.og.model.Account;
-import ru.itis.og.model.Gender;
 
 import java.time.Instant;
 import java.util.List;
@@ -34,8 +32,6 @@ public class AccountResponse {
                 .email(account.getEmail())
                 .birthday(account.getBirthday())
                 .gender(account.getGender().name())
-=======
->>>>>>> src/main/java/ru/itis/og/dto/response/AccountResponse.java
                 .build();
     }
 

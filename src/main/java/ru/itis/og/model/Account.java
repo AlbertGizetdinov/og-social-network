@@ -40,7 +40,6 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private Instant birthday;
 
-<<<<<<< src/main/java/ru/itis/og/model/Account.java
     @Column(name = "confirm_code")
     private String confirmCode;
 
@@ -57,7 +56,5 @@ public class Account extends AbstractEntity {
     public enum State {
         CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
     }
-    
-=======
->>>>>>> src/main/java/ru/itis/og/model/Account.java
+
 }
