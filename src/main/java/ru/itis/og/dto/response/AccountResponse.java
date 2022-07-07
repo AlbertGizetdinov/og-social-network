@@ -1,9 +1,7 @@
 package ru.itis.og.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+<<<<<<< src/main/java/ru/itis/og/dto/response/AccountResponse.java
+import lombok.*;
 import ru.itis.og.model.Account;
 import ru.itis.og.model.Gender;
 
@@ -12,7 +10,9 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Data
+
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +23,7 @@ public class AccountResponse {
     private String nickname;
     private String email;
     private Instant birthday;
-    private Gender gender;
+    private String gender;
 
     public static AccountResponse from(Account account) {
         return AccountResponse.builder()
@@ -33,7 +33,9 @@ public class AccountResponse {
                 .nickname(account.getNickname())
                 .email(account.getEmail())
                 .birthday(account.getBirthday())
-                .gender(account.getGender())
+                .gender(account.getGender().name())
+=======
+>>>>>>> src/main/java/ru/itis/og/dto/response/AccountResponse.java
                 .build();
     }
 

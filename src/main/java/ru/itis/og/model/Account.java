@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -39,6 +40,7 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private Instant birthday;
 
+<<<<<<< src/main/java/ru/itis/og/model/Account.java
     @Column(name = "confirm_code")
     private String confirmCode;
 
@@ -46,8 +48,16 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private State state;
 
+    @OneToMany(mappedBy = "following")
+    private Set<Subscription> followers;
+
+    @OneToMany(mappedBy = "follower")
+    private Set<Subscription> followings;
 
     public enum State {
         CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
     }
+    
+=======
+>>>>>>> src/main/java/ru/itis/og/model/Account.java
 }

@@ -1,0 +1,46 @@
+POST localhost:8080/api/v1/subscriptions
+Content-Type: application/json
+
+{
+  "fromUuid": "592789c8-3b96-43c1-bf26-44ce9457074b",
+  "toUuid": "1335722a-39f2-467f-97bd-32aa8c5e761b"
+}
+
+###
+
+GET localhost:8080/api/v1/subscriptions
+Content-Type: application/json
+
+{
+  "fromUuid": "592789c8-3b96-43c1-bf26-44ce9457074b",
+  "toUuid": "1335722a-39f2-467f-97bd-32aa8c5e761b"
+}
+
+###
+
+DELETE localhost:8080/api/v1/subscriptions
+Content-Type: application/json
+
+{
+  "fromUuid": "592789c8-3b96-43c1-bf26-44ce9457074b",
+  "toUuid": "1335722a-39f2-467f-97bd-32aa8c5e761b"
+}
+
+###
+
+GET localhost:8080/api/v1/subscriptions/followers
+Content-Type: application/json
+
+{
+  "uuid": "592789c8-3b96-43c1-bf26-44ce9457074b"
+}
+
+###
+
+GET localhost:8080/api/v1/subscriptions/followings
+Content-Type: application/json
+
+{
+  "uuid": "592789c8-3b96-43c1-bf26-44ce9457074b",
+  "page": 0
+}
