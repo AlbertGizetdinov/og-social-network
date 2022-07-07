@@ -15,6 +15,6 @@ import ru.itis.og.validation.annotation.Uuid;
 public class PostPageRequest extends PageableRequest {
 
     @Uuid
-    private String account_id;
+    private String accountId;
 
 }

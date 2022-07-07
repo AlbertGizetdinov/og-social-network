@@ -24,6 +24,6 @@ public class PostRequest {
     private String text;
 
     @Uuid
-    private String account_id;
+    private String accountId;
 
 }

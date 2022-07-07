@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
   "page": 1,
-  "account_id": "5cac54df-4e47-4eb0-a5e9-d11df17ce34c"
+  "accountId": "5cac54df-4e47-4eb0-a5e9-d11df17ce34c"
 }
 
 ###
@@ -14,7 +14,7 @@ Content-Type: application/json
 {
   "title": "this is title",
   "text": "this is text",
-  "account_id": "5cac54df-4e47-4eb0-a5e9-d11df17ce34c"
+  "accountId": "5cac54df-4e47-4eb0-a5e9-d11df17ce34c"
 }
 
 ###

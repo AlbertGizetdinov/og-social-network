@@ -1,14 +1,16 @@
 package ru.itis.og.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.Instant;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
@@ -19,7 +21,7 @@ public class Post extends AbstractEntity {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String text;
 
     @Column(name = "update_date")
@@ -29,7 +31,7 @@ public class Post extends AbstractEntity {
     private State state;
 
     @ManyToOne
-    @JoinColumn(name = "account_uuid")
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
     public enum State {

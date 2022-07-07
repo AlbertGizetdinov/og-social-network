@@ -36,7 +36,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostPageResponse getPosts(PostPageRequest postPageRequest) {
         PageRequest pageRequest = PageRequest.of(postPageRequest.getPage(), postPageRequest.getSize(), Sort.by("createDate"));
-        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(postPageRequest.getAccount_id()),
+        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(postPageRequest.getAccountId()),
                 State.PUBLISHED, pageRequest);
         return PostPageResponse.builder()
                 .posts(from(postPage.getContent()))
@@ -52,7 +52,7 @@ public class PostServiceImpl implements PostService {
                 .text(postRequest.getText())
                 .updateDate(null)
                 .state(State.PUBLISHED)
-                .account(accountRepository.findById(UUID.fromString(postRequest.getAccount_id()))
+                .account(accountRepository.findById(UUID.fromString(postRequest.getAccountId()))
                         .orElseThrow(AccountNotFoundException::new))
                 .build();
         return from(postRepository.save(post));

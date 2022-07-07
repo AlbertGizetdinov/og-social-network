@@ -21,7 +21,7 @@ public class PostResponse {
     private Instant createDate;
     private Instant updateDate;
     private Post.State state;
-    private UUID account_id;
+    private UUID accountId;
 
     public static PostResponse from(Post post) {
         return PostResponse.builder()
@@ -31,7 +31,7 @@ public class PostResponse {
                 .createDate(post.getCreateDate())
                 .updateDate(post.getUpdateDate())
                 .state(post.getState())
-                .account_id(post.getAccount().getId())
+                .accountId(post.getAccount().getId())
                 .build();
     }
 
