@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,4 +40,6 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private Instant birthday;
 
+    @OneToMany(mappedBy = "account")
+    private List<Post> posts;
 }
