@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountResponse {
+
     private UUID id;
     private String firstname;
     private String lastname;

@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -40,6 +41,9 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private Instant birthday;
 
+    @OneToMany(mappedBy = "account")
+    private List<Post> posts;
+
     @Column(name = "confirm_code")
     private String confirmCode;
 
@@ -56,5 +60,4 @@ public class Account extends AbstractEntity {
     public enum State {
         CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
     }
-
 }
