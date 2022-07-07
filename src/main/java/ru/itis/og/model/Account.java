@@ -8,6 +8,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -38,5 +39,11 @@ public class Account extends AbstractEntity {
 
     @Column(nullable = false)
     private Instant birthday;
+
+    @OneToMany(mappedBy = "following")
+    private Set<Subscription> followers;
+
+    @OneToMany(mappedBy = "follower")
+    private Set<Subscription> followings;
 
 }
