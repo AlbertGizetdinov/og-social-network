@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import ru.itis.og.dto.request.SubscriptionPageRequest;
+import ru.itis.og.dto.request.page.SubscriptionPageRequest;
 import ru.itis.og.dto.response.AccountResponse;
 import ru.itis.og.dto.response.page.AccountPageResponse;
 import ru.itis.og.model.Account;

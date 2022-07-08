@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.itis.og.api.SubscriptionApi;
-import ru.itis.og.dto.request.SubscriptionPageRequest;
+import ru.itis.og.dto.request.page.SubscriptionPageRequest;
 import ru.itis.og.dto.request.SubscriptionRequest;
 import ru.itis.og.dto.response.SubscriptionResponse;
 import ru.itis.og.dto.response.page.AccountPageResponse;

@@ -1,4 +1,4 @@
-package ru.itis.og.dto.request;
+package ru.itis.og.dto.request.page;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

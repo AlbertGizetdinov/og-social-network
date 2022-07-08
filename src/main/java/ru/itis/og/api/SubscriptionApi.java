@@ -2,7 +2,7 @@ package ru.itis.og.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.itis.og.dto.request.SubscriptionPageRequest;
+import ru.itis.og.dto.request.page.SubscriptionPageRequest;
 import ru.itis.og.dto.request.SubscriptionRequest;
 import ru.itis.og.dto.response.SubscriptionResponse;
 import ru.itis.og.dto.response.page.AccountPageResponse;

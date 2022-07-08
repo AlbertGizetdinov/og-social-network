@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.itis.og.api.PostApi;
-import ru.itis.og.dto.request.PostPageRequest;
+import ru.itis.og.dto.request.page.PostPageRequest;
 import ru.itis.og.dto.request.PostRequest;
 import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;

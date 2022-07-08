@@ -1,14 +1,10 @@
 package ru.itis.og.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import ru.itis.og.model.enumeration.State;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Getter
 @Setter
@@ -16,17 +12,17 @@ import java.time.Instant;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "post")
-public class Post extends AbstractEntity {
+@Table(name = "product")
+public class Product extends AbstractEntity {
 
     @Column(nullable = false)
-    private String title;
+    private String name;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String text;
+    @Column(nullable = false)
+    private String description;
 
-    @Column(name = "update_date")
-    private Instant updateDate;
+    @Column(nullable = false)
+    private Float price;
 
     @Enumerated(value = EnumType.STRING)
     private State state;
@@ -34,4 +30,5 @@ public class Post extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
+
 }

@@ -1,6 +1,6 @@
 package ru.itis.og.service;
 
-import ru.itis.og.dto.request.PostPageRequest;
+import ru.itis.og.dto.request.page.PostPageRequest;
 import ru.itis.og.dto.request.PostRequest;
 import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;

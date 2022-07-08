@@ -2,7 +2,7 @@ package ru.itis.og.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.itis.og.dto.request.PostPageRequest;
+import ru.itis.og.dto.request.page.PostPageRequest;
 import ru.itis.og.dto.request.PostRequest;
 import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;

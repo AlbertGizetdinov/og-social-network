@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.itis.og.model.Gender;
+import ru.itis.og.model.enumeration.Gender;
 import ru.itis.og.validation.annotation.Birthday;
 
 import javax.validation.constraints.NotBlank;

@@ -1,5 +1,7 @@
 package ru.itis.og.constant;
 
+import ru.itis.og.model.enumeration.State;
+
 public interface OgConstant {
 
     // example: String USER_CONTROLLER_PATH = API_PATH + "/users";
@@ -14,6 +16,10 @@ public interface OgConstant {
 
     String POSTS_CONTROLLER_PATH = API_PATH + "/posts";
 
+    String PRODUCT_CONTROLLER_PATH = API_PATH + "/products";
+
     int PAGEABLE_DEFAULT_SIZE = 5;
     int TIME_TO_EDIT_POST = 60 * 60 * 24; // 24 hours
+
+    State DEFAULT_STATE = State.PUBLISHED;
 }

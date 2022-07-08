@@ -1,4 +1,4 @@
-package ru.itis.og.dto.request;
+package ru.itis.og.dto.request.page;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,9 +12,8 @@ import ru.itis.og.validation.annotation.Uuid;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class PostPageRequest extends PageableRequest {
+public class ProductPageRequest extends PageableRequest {
 
     @Uuid
     private String accountId;
-
 }
