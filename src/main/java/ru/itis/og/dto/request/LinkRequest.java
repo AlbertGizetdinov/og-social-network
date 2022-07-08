@@ -4,17 +4,24 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
+import ru.itis.og.validation.annotation.Uri;
 import ru.itis.og.validation.annotation.Uuid;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
-public class PostPageRequest extends PageableRequest {
+public class LinkRequest {
 
     @Uuid
     private String accountId;
+
+    private String title;
+
+    @NotBlank
+    @Uri
+    private String link;
 
 }

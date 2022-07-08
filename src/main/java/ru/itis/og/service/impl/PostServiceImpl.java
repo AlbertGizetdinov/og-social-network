@@ -6,7 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.itis.og.dto.request.PostPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.request.PostRequest;
 import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;
@@ -34,9 +34,9 @@ public class PostServiceImpl implements PostService {
     private final AccountRepository accountRepository;
 
     @Override
-    public PostPageResponse getPosts(PostPageRequest postPageRequest) {
+    public PostPageResponse getPosts(IdPageRequest postPageRequest) {
         PageRequest pageRequest = PageRequest.of(postPageRequest.getPage(), postPageRequest.getSize(), Sort.by("createDate"));
-        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(postPageRequest.getAccountId()),
+        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(postPageRequest.getId()),
                 State.PUBLISHED, pageRequest);
         return PostPageResponse.builder()
                 .posts(from(postPage.getContent()))

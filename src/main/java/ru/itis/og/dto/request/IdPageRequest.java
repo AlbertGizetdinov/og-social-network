@@ -12,9 +12,9 @@ import ru.itis.og.validation.annotation.Uuid;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class SubscriptionPageRequest extends PageableRequest {
+public class IdPageRequest extends PageableRequest {
 
     @Uuid
-    private String uuid;
+    private String id;
 
 }
