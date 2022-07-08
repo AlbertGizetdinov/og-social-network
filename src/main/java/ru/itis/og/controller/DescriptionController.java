@@ -18,7 +18,7 @@ public class DescriptionController implements DescriptionApi {
     private final DescriptionService descriptionService;
 
     @Override
-    public ResponseEntity<DescriptionResponse> addDescription(DescriptionRequest descriptionRequest, UUID accountId) {
+    public ResponseEntity<DescriptionResponse> addDescription(UUID accountId, DescriptionRequest descriptionRequest) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(descriptionService.addDescription(descriptionRequest, accountId));
     }

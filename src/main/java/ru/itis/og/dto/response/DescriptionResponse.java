@@ -1,12 +1,8 @@
 package ru.itis.og.dto.response;
 
 import lombok.*;
-import ru.itis.og.dto.request.DescriptionRequest;
-import ru.itis.og.model.Account;
 import ru.itis.og.model.Description;
 
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

@@ -5,12 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.graalvm.compiler.lir.CompositeValue;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -38,7 +34,8 @@ public class Description extends AbstractEntity {
 
     private String job;
 
-    @OneToOne(mappedBy = "description")
+    @OneToOne()
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
 }

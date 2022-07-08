@@ -14,8 +14,8 @@ import static ru.itis.og.constant.OgConstant.DESCRIPTION_CONTROLLER_PATH;
 public interface DescriptionApi {
 
     @PostMapping(produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<DescriptionResponse> addDescription(@RequestBody DescriptionRequest descriptionRequest,
-                                                       @PathVariable("account-id") UUID accountId);
+    ResponseEntity<DescriptionResponse> addDescription(@PathVariable("account-id") UUID accountId,
+                                                       @RequestBody DescriptionRequest descriptionRequest);
 
     @PutMapping(produces = APPLICATION_JSON_VALUE)
     ResponseEntity<DescriptionResponse> updateDescription(@RequestBody DescriptionRequest descriptionRequest,

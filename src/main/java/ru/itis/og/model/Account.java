@@ -57,8 +57,7 @@ public class Account extends AbstractEntity {
     @OneToMany(mappedBy = "follower")
     private Set<Subscription> followings;
 
-    @OneToOne()
-    @JoinColumn(name = "description_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "account")
     private Description description;
 
     public enum State {
