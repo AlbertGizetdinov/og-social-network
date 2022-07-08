@@ -1,12 +1,12 @@
 package ru.itis.og.service;
 
-import ru.itis.og.dto.request.page.SubscriptionPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.response.page.AccountPageResponse;
 
 public interface AccountService {
 
-    AccountPageResponse getFollowers(SubscriptionPageRequest subscriptionPageRequest);
+    AccountPageResponse getFollowers(IdPageRequest idPageRequest);
 
-    AccountPageResponse getFollowings(SubscriptionPageRequest subscriptionPageRequest);
+    AccountPageResponse getFollowings(IdPageRequest idPageRequest);
 
 }

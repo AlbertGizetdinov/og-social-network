@@ -14,7 +14,11 @@ public interface OgConstant {
     String FOLLOWERS_PATH = "/followers";
     String FOLLOWINGS_PATH = "/followings";
 
-    String POSTS_CONTROLLER_PATH = API_PATH + "/posts";
+    String POST_CONTROLLER_PATH = API_PATH + "/posts";
+
+    String LINK_CONTROLLER_PATH = API_PATH + "/links";
+
+    String DESCRIPTION_CONTROLLER_PATH = API_PATH + "/accounts/{account-id}/description";
 
     String PRODUCT_CONTROLLER_PATH = API_PATH + "/products";
 

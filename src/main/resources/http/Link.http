@@ -1,0 +1,27 @@
+GET localhost:8080/api/v1/links
+Content-Type: application/json
+
+{
+  "page": 0,
+  "id": "1335722a-39f2-467f-97bd-32aa8c5e761b"
+}
+
+###
+
+POST localhost:8080/api/v1/links
+Content-Type: application/json
+
+{
+  "title": "Мой вк",
+  "link": "Инстасамка крутая, и валидация тоже крутая",
+  "accountId": "1335722a-39f2-467f-97bd-32aa8c5e761b"
+}
+
+###
+
+DELETE localhost:8080/api/v1/links
+Content-Type: application/json
+
+{
+  "id": "4144aa1a-39e6-4b26-9ec7-eab25e15b375"
+}

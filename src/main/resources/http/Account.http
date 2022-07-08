@@ -1,0 +1,27 @@
+POST localhost:8080/api/v1/accounts/65884118-feb2-11ec-b939-0242ac120002/description
+Content-Type: application/json
+
+{
+  "status": "ya dodik",
+  "hometown": "kazan",
+  "country": "russia",
+  "website": "bolshiyeprogi.com",
+  "job": "proger"
+}
+
+###
+
+PUT localhost:8080/api/v1/accounts/65884118-feb2-11ec-b939-0242ac120002/description
+Content-Type: application/json
+
+{
+  "status": "ya s marselem v turcii zhdu kalik",
+  "hometown": "antaliya",
+  "country": "turcija",
+  "personalWebsite": "bolshiyeprogi.com",
+  "job": "kalyanshick"
+}
+
+###
+
+GET localhost:8080/api/v1/accounts/65884118-feb2-11ec-b939-0242ac120002/description

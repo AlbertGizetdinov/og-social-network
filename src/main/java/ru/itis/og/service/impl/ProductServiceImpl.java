@@ -5,8 +5,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.request.ProductRequest;
-import ru.itis.og.dto.request.page.ProductPageRequest;
 import ru.itis.og.dto.response.ProductResponse;
 import ru.itis.og.dto.response.page.ProductPageResponse;
 import ru.itis.og.exception.AccountNotFoundException;
@@ -31,9 +31,9 @@ public class ProductServiceImpl implements ProductService {
     private final AccountRepository accountRepository;
 
     @Override
-    public ProductPageResponse getProducts(ProductPageRequest productPageRequest) {
-        PageRequest pageRequest = PageRequest.of(productPageRequest.getPage(), productPageRequest.getSize(), Sort.by("createDate"));
-        Page<Product> productPage = productRepository.findAllByAccount_IdAndState(UUID.fromString(productPageRequest.getAccountId()),
+    public ProductPageResponse getProducts(IdPageRequest idPageRequest) {
+        PageRequest pageRequest = PageRequest.of(idPageRequest.getPage(), idPageRequest.getSize(), Sort.by("createDate"));
+        Page<Product> productPage = productRepository.findAllByAccount_IdAndState(UUID.fromString(idPageRequest.getId()),
                 DEFAULT_STATE, pageRequest);
         return ProductPageResponse.builder()
                 .products(from(productPage.getContent()))

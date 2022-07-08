@@ -6,13 +6,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import ru.itis.og.dto.request.page.PostPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.request.PostRequest;
 import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;
 import ru.itis.og.exception.AccountNotFoundException;
 import ru.itis.og.exception.OgServiceException;
-import ru.itis.og.exception.PostNotFountException;
+import ru.itis.og.exception.PostNotFoundException;
 import ru.itis.og.model.Post;
 import ru.itis.og.model.enumeration.State;
 import ru.itis.og.repository.AccountRepository;
@@ -35,9 +35,9 @@ public class PostServiceImpl implements PostService {
     private final AccountRepository accountRepository;
 
     @Override
-    public PostPageResponse getPosts(PostPageRequest postPageRequest) {
-        PageRequest pageRequest = PageRequest.of(postPageRequest.getPage(), postPageRequest.getSize(), Sort.by("createDate"));
-        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(postPageRequest.getAccountId()),
+    public PostPageResponse getPosts(IdPageRequest idPageRequest) {
+        PageRequest pageRequest = PageRequest.of(idPageRequest.getPage(), idPageRequest.getSize(), Sort.by("createDate"));
+        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(idPageRequest.getId()),
                 DEFAULT_STATE, pageRequest);
         return PostPageResponse.builder()
                 .posts(from(postPage.getContent()))
@@ -61,7 +61,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostResponse updatePost(PostRequest postRequest) {
-        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFountException::new);
+        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFoundException::new);
         if (Instant.now().isBefore(post.getCreateDate().plusSeconds(TIME_TO_EDIT_POST))) {
             if (post.getState() != null) {
                 post.setTitle(postRequest.getTitle());
@@ -77,7 +77,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void deletePost(PostRequest postRequest) {
-        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFountException::new);
+        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFoundException::new);
         post.setState(State.DELETED);
         postRepository.save(post);
     }

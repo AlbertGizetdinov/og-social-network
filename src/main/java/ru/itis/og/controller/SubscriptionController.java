@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.itis.og.api.SubscriptionApi;
-import ru.itis.og.dto.request.page.SubscriptionPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.request.SubscriptionRequest;
 import ru.itis.og.dto.response.SubscriptionResponse;
 import ru.itis.og.dto.response.page.AccountPageResponse;
@@ -17,6 +17,7 @@ import ru.itis.og.service.SubscriptionService;
 public class SubscriptionController implements SubscriptionApi {
 
     private final SubscriptionService subscriptionService;
+
     private final AccountService accountService;
 
     @Override
@@ -37,13 +38,13 @@ public class SubscriptionController implements SubscriptionApi {
     }
 
     @Override
-    public ResponseEntity<AccountPageResponse> getFollowers(SubscriptionPageRequest subscriptionPageRequest) {
-        return ResponseEntity.ok(accountService.getFollowers(subscriptionPageRequest));
+    public ResponseEntity<AccountPageResponse> getFollowers(IdPageRequest idPageRequest) {
+        return ResponseEntity.ok(accountService.getFollowers(idPageRequest));
     }
 
     @Override
-    public ResponseEntity<AccountPageResponse> getFollowings(SubscriptionPageRequest subscriptionPageRequest) {
-        return ResponseEntity.ok(accountService.getFollowings(subscriptionPageRequest));
+    public ResponseEntity<AccountPageResponse> getFollowings(IdPageRequest idPageRequest) {
+        return ResponseEntity.ok(accountService.getFollowings(idPageRequest));
     }
 
 }

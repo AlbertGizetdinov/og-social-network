@@ -1,13 +1,13 @@
 package ru.itis.og.service;
 
-import ru.itis.og.dto.request.page.PostPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.request.PostRequest;
 import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;
 
 public interface PostService {
 
-    PostPageResponse getPosts(PostPageRequest postPageRequest);
+    PostPageResponse getPosts(IdPageRequest idPageRequest);
 
     PostResponse createPost(PostRequest postRequest);
 

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import ru.itis.og.dto.request.page.SubscriptionPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.response.AccountResponse;
 import ru.itis.og.dto.response.page.AccountPageResponse;
 import ru.itis.og.model.Account;
@@ -21,10 +21,10 @@ public class AccountServiceImpl implements AccountService {
     private final SubscriptionRepository subscriptionRepository;
 
     @Override
-    public AccountPageResponse getFollowers(SubscriptionPageRequest subscriptionPageRequest) {
-        PageRequest pageRequest = PageRequest.of(subscriptionPageRequest.getPage(), subscriptionPageRequest.getSize());
+    public AccountPageResponse getFollowers(IdPageRequest idPageRequest) {
+        PageRequest pageRequest = PageRequest.of(idPageRequest.getPage(), idPageRequest.getSize());
         Page<Account> accounts = subscriptionRepository.findAllByFollowing_Id(
-                        UUID.fromString(subscriptionPageRequest.getUuid()), pageRequest)
+                        UUID.fromString(idPageRequest.getId()), pageRequest)
                 .map(Subscription::getFollower);
 
         return AccountPageResponse.builder()
@@ -34,10 +34,10 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountPageResponse getFollowings(SubscriptionPageRequest subscriptionPageRequest) {
-        PageRequest pageRequest = PageRequest.of(subscriptionPageRequest.getPage(), subscriptionPageRequest.getSize());
+    public AccountPageResponse getFollowings(IdPageRequest idPageRequest) {
+        PageRequest pageRequest = PageRequest.of(idPageRequest.getPage(), idPageRequest.getSize());
         Page<Account> accounts = subscriptionRepository.findAllByFollower_Id(
-                        UUID.fromString(subscriptionPageRequest.getUuid()), pageRequest)
+                        UUID.fromString(idPageRequest.getId()), pageRequest)
                 .map(Subscription::getFollowing);
 
         return AccountPageResponse.builder()

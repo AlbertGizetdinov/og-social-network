@@ -2,7 +2,7 @@ package ru.itis.og.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.itis.og.dto.request.page.SubscriptionPageRequest;
+import ru.itis.og.dto.request.IdPageRequest;
 import ru.itis.og.dto.request.SubscriptionRequest;
 import ru.itis.og.dto.response.SubscriptionResponse;
 import ru.itis.og.dto.response.page.AccountPageResponse;
@@ -25,9 +25,9 @@ public interface SubscriptionApi {
     ResponseEntity<?> deleteSubscription(@Valid @RequestBody SubscriptionRequest subscriptionRequest);
 
     @GetMapping(value = FOLLOWERS_PATH, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<AccountPageResponse> getFollowers(@Valid @RequestBody SubscriptionPageRequest subscriptionPageRequest);
+    ResponseEntity<AccountPageResponse> getFollowers(@Valid @RequestBody IdPageRequest idPageRequest);
 
     @GetMapping(value = FOLLOWINGS_PATH, consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<AccountPageResponse> getFollowings(@Valid @RequestBody SubscriptionPageRequest subscriptionPageRequest);
+    ResponseEntity<AccountPageResponse> getFollowings(@Valid @RequestBody IdPageRequest idPageRequest);
 
 }

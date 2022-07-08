@@ -1,0 +1,30 @@
+spring:
+    datasource:
+        driver-class-name: org.postgresql.Driver
+        username: postgres
+        password: qwerty007
+        url: jdbc:postgresql://localhost:5432/OG
+
+    jpa:
+        hibernate.ddl-auto: update
+        database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+        show-sql: true
+        properties:
+            hibernate.format_sql: true
+
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username:
+        password:
+        properties:
+            mail.smtp.starttls.enable: true
+            mail.smtp.allow8bitmime: true
+            mail.smtp.ssl.trust: smtp.gmail.com
+            mail.debug: true
+
+    freemarker:
+        template-loader-path: classpath:/templates/,classpath:/mails/
+
+server:
+    port: 8080
