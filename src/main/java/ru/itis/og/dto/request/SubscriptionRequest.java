@@ -13,9 +13,9 @@ import ru.itis.og.validation.annotation.Uuid;
 public class SubscriptionRequest {
 
     @Uuid
-    private String fromUuid;
+    private String fromId;
 
     @Uuid
-    private String toUuid;
+    private String toId;
 
 }

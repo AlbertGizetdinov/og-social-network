@@ -25,9 +25,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public SubscriptionResponse createSubscription(SubscriptionRequest subscriptionRequest) {
-        Account follower = accountRepository.findById(UUID.fromString(subscriptionRequest.getFromUuid()))
+        Account follower = accountRepository.findById(UUID.fromString(subscriptionRequest.getFromId()))
                 .orElseThrow(AccountNotFoundException::new);
-        Account following = accountRepository.findById(UUID.fromString(subscriptionRequest.getToUuid()))
+        Account following = accountRepository.findById(UUID.fromString(subscriptionRequest.getToId()))
                 .orElseThrow(AccountNotFoundException::new);
 
         return from(subscriptionRepository.save(Subscription.builder()
@@ -39,16 +39,16 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public SubscriptionResponse getSubscription(SubscriptionRequest subscriptionRequest) {
         return subscriptionRepository.findByFollower_IdAndFollowing_Id(
-                UUID.fromString(subscriptionRequest.getFromUuid()),
-                UUID.fromString(subscriptionRequest.getToUuid())
+                UUID.fromString(subscriptionRequest.getFromId()),
+                UUID.fromString(subscriptionRequest.getToId())
         ).map(SubscriptionResponse::from).orElseThrow(SubscriptionNotFoundException::new);
     }
 
     @Override
     public void deleteSubscription(SubscriptionRequest subscriptionRequest) {
         Subscription subscription = subscriptionRepository.findByFollower_IdAndFollowing_Id(
-                UUID.fromString(subscriptionRequest.getFromUuid()),
-                UUID.fromString(subscriptionRequest.getToUuid())
+                UUID.fromString(subscriptionRequest.getFromId()),
+                UUID.fromString(subscriptionRequest.getToId())
         ).orElseThrow(SubscriptionNotFoundException::new);
         subscriptionRepository.delete(subscription);
     }

@@ -57,6 +57,9 @@ public class Account extends AbstractEntity {
     @OneToMany(mappedBy = "follower")
     private Set<Subscription> followings;
 
+    @OneToMany(mappedBy = "account")
+    private Set<Link> links;
+
     public enum State {
         CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
     }
