@@ -12,8 +12,11 @@ public interface OgConstant {
     String FOLLOWERS_PATH = "/followers";
     String FOLLOWINGS_PATH = "/followings";
 
-    String POSTS_CONTROLLER_PATH = API_PATH + "/posts";
+    String POST_CONTROLLER_PATH = API_PATH + "/posts";
+
+    String LINK_CONTROLLER_PATH = API_PATH + "/links";
 
     int PAGEABLE_DEFAULT_SIZE = 5;
     int TIME_TO_EDIT_POST = 60 * 60 * 24; // 24 hours
+
 }
