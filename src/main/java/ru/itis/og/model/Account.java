@@ -57,6 +57,9 @@ public class Account extends AbstractEntity {
     @OneToMany(mappedBy = "follower")
     private Set<Subscription> followings;
 
+    @OneToOne(mappedBy = "account")
+    private Description description;
+
     @OneToMany(mappedBy = "account")
     private Set<Link> links;
 

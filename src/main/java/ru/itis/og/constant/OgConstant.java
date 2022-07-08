@@ -16,6 +16,8 @@ public interface OgConstant {
 
     String LINK_CONTROLLER_PATH = API_PATH + "/links";
 
+    String DESCRIPTION_CONTROLLER_PATH = API_PATH + "/accounts/{account-id}/description";
+
     int PAGEABLE_DEFAULT_SIZE = 5;
     int TIME_TO_EDIT_POST = 60 * 60 * 24; // 24 hours
 

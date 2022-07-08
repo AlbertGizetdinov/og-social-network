@@ -12,7 +12,7 @@ import ru.itis.og.dto.response.PostResponse;
 import ru.itis.og.dto.response.page.PostPageResponse;
 import ru.itis.og.exception.AccountNotFoundException;
 import ru.itis.og.exception.OgServiceException;
-import ru.itis.og.exception.PostNotFountException;
+import ru.itis.og.exception.PostNotFoundException;
 import ru.itis.og.model.Post;
 import ru.itis.og.model.Post.State;
 import ru.itis.og.repository.AccountRepository;
@@ -60,7 +60,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostResponse updatePost(PostRequest postRequest) {
-        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFountException::new);
+        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFoundException::new);
         if (Instant.now().isBefore(post.getCreateDate().plusSeconds(TIME_TO_EDIT_POST))) {
             post.setTitle(postRequest.getTitle());
             post.setText(postRequest.getText());
@@ -72,7 +72,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public void deletePost(PostRequest postRequest) {
-        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFountException::new);
+        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFoundException::new);
         post.setState(State.DELETED);
         postRepository.save(post);
     }

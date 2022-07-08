@@ -23,6 +23,6 @@
 <p>To end the registration process, please click the button below</p>
 <a class="btn" href="http://localhost/confirm/${confirm_code}">Confirm your email</a>
 <p>A warm welcome,</p>
-<p>STUDENTS GIFTERY</p>
+<p>OG network</p>
 </body>
 </html>
