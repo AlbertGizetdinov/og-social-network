@@ -15,6 +15,7 @@ import ru.itis.og.exception.LinkNotFoundException;
 import ru.itis.og.exception.OgServiceException;
 import ru.itis.og.model.Account;
 import ru.itis.og.model.Link;
+import ru.itis.og.model.enumeration.State;
 import ru.itis.og.repository.AccountRepository;
 import ru.itis.og.repository.LinkRepository;
 import ru.itis.og.service.LinkService;
@@ -22,6 +23,8 @@ import ru.itis.og.service.LinkService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
+
+import static ru.itis.og.constant.OgConstant.DEFAULT_STATE;
 
 @Service
 @RequiredArgsConstructor
@@ -48,6 +51,7 @@ public class LinkServiceImpl implements LinkService {
                         .account(account)
                         .title(title)
                         .link(uri)
+                        .state(DEFAULT_STATE)
                         .build()
         ));
     }
@@ -57,7 +61,9 @@ public class LinkServiceImpl implements LinkService {
         PageRequest pageRequest = PageRequest.of(
                 linkPageRequest.getPage(), linkPageRequest.getSize(), Sort.by("createDate")
         );
-        Page<Link> links = linkRepository.findAllByAccount_Id(UUID.fromString(linkPageRequest.getId()), pageRequest);
+        Page<Link> links = linkRepository.findAllByAccount_IdAndState(
+                UUID.fromString(linkPageRequest.getId()), State.PUBLISHED, pageRequest
+        );
         return LinkPageResponse.builder()
                 .links(LinkResponse.from(links.getContent()))
                 .totalPages(links.getTotalPages())
@@ -66,8 +72,9 @@ public class LinkServiceImpl implements LinkService {
 
     @Override
     public void deleteLink(IdPageRequest linkPageRequest) {
-        linkRepository.delete(linkRepository.findById(
-                UUID.fromString(linkPageRequest.getId())
-        ).orElseThrow(LinkNotFoundException::new));
+        Link link = linkRepository.findById(UUID.fromString(linkPageRequest.getId()))
+                .orElseThrow(LinkNotFoundException::new);
+        link.setState(State.DELETED);
+        linkRepository.save(link);
     }
 }

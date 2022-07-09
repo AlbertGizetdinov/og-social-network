@@ -7,7 +7,7 @@ import ru.itis.og.dto.response.page.PostPageResponse;
 
 public interface PostService {
 
-    PostPageResponse getPosts(IdPageRequest postPageRequest);
+    PostPageResponse getPosts(IdPageRequest idPageRequest);
 
     PostResponse createPost(PostRequest postRequest);
 

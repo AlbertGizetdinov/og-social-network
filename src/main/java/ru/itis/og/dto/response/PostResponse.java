@@ -2,6 +2,7 @@ package ru.itis.og.dto.response;
 
 import lombok.*;
 import ru.itis.og.model.Post;
+import ru.itis.og.model.enumeration.State;
 
 import java.time.Instant;
 import java.util.List;
@@ -20,7 +21,7 @@ public class PostResponse {
     private String text;
     private Instant createDate;
     private Instant updateDate;
-    private Post.State state;
+    private State state;
     private UUID accountId;
 
     public static PostResponse from(Post post) {

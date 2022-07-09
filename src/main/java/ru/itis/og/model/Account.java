@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import ru.itis.og.model.enumeration.Gender;
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -43,6 +44,9 @@ public class Account extends AbstractEntity {
 
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
+
+    @OneToMany(mappedBy = "account")
+    private List<Product> products;
 
     @Column(name = "confirm_code")
     private String confirmCode;

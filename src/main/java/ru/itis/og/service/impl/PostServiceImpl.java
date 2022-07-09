@@ -14,7 +14,7 @@ import ru.itis.og.exception.AccountNotFoundException;
 import ru.itis.og.exception.OgServiceException;
 import ru.itis.og.exception.PostNotFoundException;
 import ru.itis.og.model.Post;
-import ru.itis.og.model.Post.State;
+import ru.itis.og.model.enumeration.State;
 import ru.itis.og.repository.AccountRepository;
 import ru.itis.og.repository.PostRepository;
 import ru.itis.og.service.PostService;
@@ -22,6 +22,7 @@ import ru.itis.og.service.PostService;
 import java.time.Instant;
 import java.util.UUID;
 
+import static ru.itis.og.constant.OgConstant.DEFAULT_STATE;
 import static ru.itis.og.constant.OgConstant.TIME_TO_EDIT_POST;
 import static ru.itis.og.dto.response.PostResponse.from;
 
@@ -34,10 +35,10 @@ public class PostServiceImpl implements PostService {
     private final AccountRepository accountRepository;
 
     @Override
-    public PostPageResponse getPosts(IdPageRequest postPageRequest) {
-        PageRequest pageRequest = PageRequest.of(postPageRequest.getPage(), postPageRequest.getSize(), Sort.by("createDate"));
-        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(postPageRequest.getId()),
-                State.PUBLISHED, pageRequest);
+    public PostPageResponse getPosts(IdPageRequest idPageRequest) {
+        PageRequest pageRequest = PageRequest.of(idPageRequest.getPage(), idPageRequest.getSize(), Sort.by("createDate"));
+        Page<Post> postPage = postRepository.findAllByAccount_IdAndState(UUID.fromString(idPageRequest.getId()),
+                DEFAULT_STATE, pageRequest);
         return PostPageResponse.builder()
                 .posts(from(postPage.getContent()))
                 .totalPages(postPage.getTotalPages())
@@ -62,8 +63,12 @@ public class PostServiceImpl implements PostService {
     public PostResponse updatePost(PostRequest postRequest) {
         Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFoundException::new);
         if (Instant.now().isBefore(post.getCreateDate().plusSeconds(TIME_TO_EDIT_POST))) {
-            post.setTitle(postRequest.getTitle());
-            post.setText(postRequest.getText());
+            if (post.getState() != null) {
+                post.setTitle(postRequest.getTitle());
+            }
+            if (post.getText() != null) {
+                post.setText(postRequest.getText());
+            }
             post.setUpdateDate(Instant.now());
             return from(postRepository.save(post));
         }

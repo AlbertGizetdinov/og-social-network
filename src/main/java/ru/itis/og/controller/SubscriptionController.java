@@ -17,6 +17,7 @@ import ru.itis.og.service.SubscriptionService;
 public class SubscriptionController implements SubscriptionApi {
 
     private final SubscriptionService subscriptionService;
+
     private final AccountService accountService;
 
     @Override

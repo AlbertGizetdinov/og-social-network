@@ -19,7 +19,7 @@ public class UriConverter implements AttributeConverter<URI, String> {
     @Override
     public URI convertToEntityAttribute(String string) {
         try {
-            return (string == null) ? null : new URI(string);
+            return (string == null) ? null : new URI(string).normalize();
         } catch (URISyntaxException e) {
             throw new OgServiceException(HttpStatus.BAD_REQUEST, e.getMessage());
         }

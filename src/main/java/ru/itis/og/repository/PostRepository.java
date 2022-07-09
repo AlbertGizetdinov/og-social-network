@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.itis.og.model.Post;
-import ru.itis.og.model.Post.State;
+import ru.itis.og.model.enumeration.State;
 
 import java.util.UUID;
 

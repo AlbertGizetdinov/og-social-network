@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import ru.itis.og.model.enumeration.State;
 
 import javax.persistence.*;
 import java.net.URI;
@@ -25,6 +26,9 @@ public class Link extends AbstractEntity {
 
     @Column(nullable = false)
     private String title;
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
 
     @Column(nullable = false)
     private URI link;

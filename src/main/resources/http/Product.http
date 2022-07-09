@@ -1,0 +1,39 @@
+GET localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "page": 0,
+  "id": "5cac54df-4e47-4eb0-a5e9-d11df17ce34c"
+}
+
+###
+
+POST localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "name": "name 6",
+  "description": "description",
+  "price": 5.99,
+  "accountId": "5cac54df-4e47-4eb0-a5e9-d11df17ce34c"
+}
+
+###
+
+PUT localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "id": "c5adc625-e940-4540-9b0d-6072abc57856",
+  "name": "name 3333",
+  "price": 60.99
+}
+
+###
+
+DELETE localhost:8080/api/v1/products
+Content-Type: application/json
+
+{
+  "id": "4efb68b8-4853-48a5-9d0b-484741359ab6"
+}
