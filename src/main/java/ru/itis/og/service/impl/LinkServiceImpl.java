@@ -75,5 +75,6 @@ public class LinkServiceImpl implements LinkService {
         Link link = linkRepository.findById(UUID.fromString(linkPageRequest.getId()))
                 .orElseThrow(LinkNotFoundException::new);
         link.setState(State.DELETED);
+        linkRepository.save(link);
     }
 }
