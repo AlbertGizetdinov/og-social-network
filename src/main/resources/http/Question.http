@@ -1,0 +1,47 @@
+POST localhost/api/v1/questions
+Content-Type: application/json
+
+{
+  "text": "is it working?",
+  "questionerId" : "65884118-feb2-11ec-b939-0242ac120002",
+  "isAnonymous" : true
+}
+
+###
+
+PATCH localhost/api/v1/questions/c0a4a58f-e16f-470a-8b96-d52d7fac345e
+Content-Type: application/json
+
+{
+  "answer": "yeeeees, i'm Ben",
+  "answererId" : "65884118-feb2-11ec-b939-0242ac120002"
+}
+
+###
+
+GET localhost/api/v1/questions/get-not-answered
+
+###
+
+GET localhost/api/v1/questions/get-answered
+
+###
+
+POST localhost/api/v1/questions
+Content-Type: application/json
+
+{
+  "text": "second question. yes?",
+  "questionerId" : "65884118-feb2-11ec-b939-0242ac120002",
+  "isAnonymous" : false
+}
+
+###
+
+POST localhost/api/v1/questions/ed0d5a2a-f4b8-45d5-bba7-c0e4188263e4
+Content-Type: application/json
+
+{
+  "answer": "good job collega",
+  "answererId" : "65884118-feb2-11ec-b939-0242ac120002"
+}

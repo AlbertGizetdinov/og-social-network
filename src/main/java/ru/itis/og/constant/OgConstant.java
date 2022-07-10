@@ -22,6 +22,11 @@ public interface OgConstant {
 
     String PRODUCT_CONTROLLER_PATH = API_PATH + "/products";
 
+    String QUESTION_CONTROLLER_PATH = API_PATH + "/questions";
+    String QUESTION_ANSWER_CONTROLLER_PATH = "/{question-id}";
+    String QUESTION_GET_ANSWERED_CONTROLLER_PATH = "/get-answered";
+    String QUESTION_GET_NOT_ANSWERED_CONTROLLER_PATH = "/get-not-answered";
+
     int PAGEABLE_DEFAULT_SIZE = 5;
     int TIME_TO_EDIT_POST = 60 * 60 * 24; // 24 hours
 
