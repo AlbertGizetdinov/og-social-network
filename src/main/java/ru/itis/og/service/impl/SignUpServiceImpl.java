@@ -15,8 +15,8 @@ import ru.itis.og.util.EmailUtil;
 import java.time.Instant;
 import java.util.UUID;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class SignUpServiceImpl implements SignUpService {
     private final AccountRepository accountRepository;
     private final EmailUtil emailUtil;

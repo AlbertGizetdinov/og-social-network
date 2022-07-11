@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.itis.og.dto.request.DescriptionRequest;
 import ru.itis.og.dto.response.DescriptionResponse;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -15,10 +16,10 @@ public interface DescriptionApi {
 
     @PostMapping(produces = APPLICATION_JSON_VALUE)
     ResponseEntity<DescriptionResponse> addDescription(@PathVariable("account-id") UUID accountId,
-                                                       @RequestBody DescriptionRequest descriptionRequest);
+                                                       @Valid @RequestBody DescriptionRequest descriptionRequest);
 
     @PutMapping(produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<DescriptionResponse> updateDescription(@RequestBody DescriptionRequest descriptionRequest,
+    ResponseEntity<DescriptionResponse> updateDescription(@Valid @RequestBody DescriptionRequest descriptionRequest,
                                                           @PathVariable("account-id") UUID accountId);
 
     @GetMapping(produces = APPLICATION_JSON_VALUE)

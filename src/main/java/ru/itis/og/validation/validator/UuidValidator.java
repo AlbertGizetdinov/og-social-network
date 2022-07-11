@@ -9,10 +9,14 @@ import java.util.UUID;
 public class UuidValidator implements ConstraintValidator<Uuid, String> {
     @Override
     public boolean isValid(String string, ConstraintValidatorContext constraintValidatorContext) {
-        try {
-            UUID.fromString(string);
-            return true;
-        } catch (IllegalArgumentException exception) {
+        if (string != null) {
+            try {
+                UUID.fromString(string);
+                return true;
+            } catch (IllegalArgumentException exception) {
+                return false;
+            }
+        } else {
             return false;
         }
     }
