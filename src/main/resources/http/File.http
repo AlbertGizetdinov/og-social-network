@@ -1,0 +1,32 @@
+POST localhost:8080/api/v1/files
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="account-id"
+Content-Type: text/plain
+
+1335722a-39f2-467f-97bd-32aa8c5e761b
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="1584537387455.jpg"
+Content-Type: image/jpeg
+
+< C:\Users\galya\OneDrive\Изображения\Pets\Markis\1584537387455.jpg
+--WebAppBoundary--
+
+###
+
+GET localhost:8080/api/v1/files
+Content-Type: application/json
+
+{
+  "id": "1335722a-39f2-467f-97bd-32aa8c5e761b"
+}
+
+###
+
+DELETE localhost:8080/api/v1/files
+Content-Type: application/json
+
+{
+  "id": "b2318962-703d-418a-8912-e4a257dda998"
+}

@@ -27,6 +27,9 @@ public interface OgConstant {
     String QUESTION_GET_ANSWERED_CONTROLLER_PATH = "/get-answered";
     String QUESTION_GET_NOT_ANSWERED_CONTROLLER_PATH = "/get-not-answered";
 
+    String FILE_CONTROLLER_PATH = API_PATH + "/files";
+    String GET_FILE_PATH = "/{filename:.+}";
+
     int PAGEABLE_DEFAULT_SIZE = 5;
     int TIME_TO_EDIT_POST = 60 * 60 * 24; // 24 hours
 

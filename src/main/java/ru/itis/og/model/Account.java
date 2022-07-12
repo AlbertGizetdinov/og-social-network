@@ -67,6 +67,9 @@ public class Account extends AbstractEntity {
     @OneToMany(mappedBy = "account")
     private Set<Link> links;
 
+    @OneToMany(mappedBy = "account")
+    private Set<FileInformation> files;
+
     public enum State {
         CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
     }
