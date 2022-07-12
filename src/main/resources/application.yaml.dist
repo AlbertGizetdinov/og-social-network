@@ -26,5 +26,14 @@ spring:
     freemarker:
         template-loader-path: classpath:/templates/,classpath:/mails/
 
+    servlet:
+            multipart:
+                max-request-size: 100MB
+                max-file-size: 100MB
+
+files:
+    storage:
+        path: C:\tmp
+
 server:
     port: 8080
