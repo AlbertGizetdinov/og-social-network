@@ -4,13 +4,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.itis.og.dto.request.AnswerRequest;
 import ru.itis.og.dto.request.QuestionRequest;
+import ru.itis.og.dto.response.AnswerResponse;
 import ru.itis.og.dto.response.QuestionResponse;
 import ru.itis.og.exception.QuestionNotFoundException;
+import ru.itis.og.model.Answer;
 import ru.itis.og.model.Question;
+import ru.itis.og.repository.AnswerRepository;
 import ru.itis.og.repository.QuestionRepository;
 import ru.itis.og.service.QuestionService;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,12 +24,15 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final QuestionRepository questionRepository;
 
+    private final AnswerRepository answerRepository;
+
     @Override
     public QuestionResponse askQuestion(QuestionRequest questionRequest) {
         Question newQuestion = Question.builder()
                 .text(questionRequest.getText())
-                .questioner(questionRequest.getIsAnonymous() ? null : UUID.fromString(questionRequest.getQuestionerId()))
+                .accountId(questionRequest.getIsAnonymous() ? null : UUID.fromString(questionRequest.getAccountId()))
                 .createdAt(Instant.now())
+                .answers(new ArrayList<Answer>())
                 .isAnswered(false)
                 .isAnonymous(questionRequest.getIsAnonymous())
                 .build();
@@ -34,15 +41,20 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public QuestionResponse answerQuestion(AnswerRequest answerRequest, UUID questionId) {
+    public AnswerResponse addAnswer(AnswerRequest answerRequest, UUID questionId) {
         Question question = questionRepository.findById(questionId).orElseThrow(QuestionNotFoundException::new);
-        if (!question.getIsAnswered()) {
-            question.setAnswer(answerRequest.getAnswer());
-            question.setAnswerer(UUID.fromString(answerRequest.getAnswererId()));
-            question.setIsAnswered(true);
-        }
 
-        return QuestionResponse.from(questionRepository.save(question));
+        Answer newAnswer = Answer.builder()
+                .text(answerRequest.getText())
+                .accountId(UUID.fromString(answerRequest.getAccountId()))
+                .createdAt(Instant.now())
+                .question(question)
+                .build();
+
+        question.setIsAnswered(true);
+        questionRepository.save(question);
+
+        return AnswerResponse.from(answerRepository.save(newAnswer));
     }
 
     @Override
@@ -53,5 +65,12 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<QuestionResponse> getAllNotAnsweredQuestions() {
         return QuestionResponse.from(questionRepository.findAllByIsAnsweredFalse());
+    }
+
+    @Override
+    public List<AnswerResponse> getAllQuestionAnswers(UUID questionId) {
+        Question question = questionRepository.findById(questionId).orElseThrow(QuestionNotFoundException::new);
+
+        return AnswerResponse.from(question.getAnswers());
     }
 }
