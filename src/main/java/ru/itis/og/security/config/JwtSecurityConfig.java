@@ -9,22 +9,16 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFilter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
-import ru.itis.og.security.detail.AccountUserDetailsImpl;
-import ru.itis.og.security.detail.AccountUserDetailsServiceImpl;
 import ru.itis.og.security.filter.JwtAuthenticationFilter;
 import ru.itis.og.security.filter.JwtAuthorizationFilter;
 import ru.itis.og.security.filter.JwtLogoutFilter;
+
+import static ru.itis.og.constant.OgConstant.*;
 
 @RequiredArgsConstructor
 @EnableWebSecurity
@@ -43,23 +37,29 @@ public class JwtSecurityConfig {
                                                    JwtAuthenticationFilter jwtAuthenticationFilter,
                                                    JwtAuthorizationFilter jwtAuthorizationFilter,
                                                    JwtLogoutFilter jwtLogoutFilter) throws Exception {
-        httpSecurity.csrf().disable();
+        httpSecurity
+                .csrf().disable()
+                .formLogin().disable()
+                .httpBasic().disable()
+                .logout().disable();
+
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         httpSecurity.addFilter(jwtAuthenticationFilter);
-        httpSecurity.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
         httpSecurity.addFilterBefore(jwtLogoutFilter, JwtAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(jwtAuthorizationFilter, JwtLogoutFilter.class);
 
         httpSecurity.authorizeRequests()
-                .antMatchers("/api/v1/signUp").permitAll()
-                .antMatchers("/api/v1/confirm/**").permitAll()
-                .antMatchers("/api/v1/subscriptions/**").authenticated()
-                .antMatchers("/api/v1/posts/**").authenticated()
-                .antMatchers("/api/v1/links/**").authenticated()
-                .antMatchers("/api/v1/accounts/**").authenticated()
-                .antMatchers("/api/v1/products/**").authenticated()
-                .antMatchers("/api/v1/questions/**").authenticated()
-                .antMatchers("/api/v1/files/**").authenticated()
-                .antMatchers("/api/v1/auth/token").permitAll()
+                .antMatchers(SIGN_UP_CONTROLLER_PATH).permitAll()
+                .antMatchers(API_PATH + CONFIRM_PATH + "/**").permitAll()
+                .antMatchers(SUBSCRIPTION_CONTROLLER_PATH + "/**").authenticated()
+                .antMatchers(POST_CONTROLLER_PATH + "/**").authenticated()
+                .antMatchers(LINK_CONTROLLER_PATH + "/**").authenticated()
+                .antMatchers(ACCOUNTS_PATH + "/**").authenticated()
+                .antMatchers(PRODUCT_CONTROLLER_PATH + "/**").authenticated()
+                .antMatchers(QUESTION_CONTROLLER_PATH + "/**").authenticated()
+                .antMatchers(FILE_CONTROLLER_PATH + "/**").authenticated()
+                .antMatchers(AUTHENTICATION_URL).permitAll()
                 .antMatchers("/swagger-ui.html/**").permitAll();
 
         return httpSecurity.build();

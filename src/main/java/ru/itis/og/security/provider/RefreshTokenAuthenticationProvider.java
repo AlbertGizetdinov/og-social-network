@@ -23,12 +23,12 @@ public class RefreshTokenAuthenticationProvider implements AuthenticationProvide
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String token = (String)authentication.getCredentials();
+        String token = (String) authentication.getCredentials();
         try {
             return jwtUtil.buildAuthentication(token);
-        } catch (JWTVerificationException e) {
-            log.info(e.getMessage());
-            throw new RefreshTokenException(e.getMessage(), e);
+        } catch (JWTVerificationException exception) {
+            log.info(exception.getMessage());
+            throw new RefreshTokenException(exception.getMessage(), exception);
         }
     }
 

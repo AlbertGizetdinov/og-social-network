@@ -5,17 +5,13 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import ru.itis.og.model.Account;
-import ru.itis.og.security.detail.AccountUserDetailsImpl;
+import ru.itis.og.model.enumeration.Role;
+import ru.itis.og.security.data.ParsedToken;
 import ru.itis.og.security.util.JwtUtil;
 
 import java.nio.charset.StandardCharsets;
@@ -24,12 +20,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static ru.itis.og.constant.OgConstant.ACCESS_TOKEN_EXPIRES_TIME;
+import static ru.itis.og.constant.OgConstant.REFRESH_TOKEN_EXPIRES_TIME;
+
 @Component
 public class JwtUtilAuth0Impl implements JwtUtil {
-
-    private static final long ACCESS_TOKEN_EXPIRES_TIME = 60 * 60 * 1000; // 60 MINUTES
-
-    private static final long REFRESH_TOKEN_EXPIRES_TIME = 24 * 60 * 60 * 1000; // ONE DAY
 
     @Value("${jwt.secret}")
     private String secret;
@@ -62,16 +57,19 @@ public class JwtUtilAuth0Impl implements JwtUtil {
     @Override
     public Authentication buildAuthentication(String token) {
         ParsedToken parsedToken = parse(token);
+        Account principal = Account.builder()
+                .role(Role.valueOf(parsedToken.getRole()))
+                .email(parsedToken.getEmail())
+                .build();
 
-        return new UsernamePasswordAuthenticationToken(new AccountUserDetailsImpl(
-                Account.builder()
-                        .role(Account.Role.valueOf(parsedToken.getRole()))
-                        .email(parsedToken.getEmail())
-                        .build()
-        ), null,
-                Collections.singleton(new SimpleGrantedAuthority(parsedToken.getRole())));
+        return new UsernamePasswordAuthenticationToken(
+                principal,
+                null,
+                Collections.singleton(principal.getRole())
+        );
     }
 
+    // TODO
     private ParsedToken parse(String token) throws JWTVerificationException {
         Algorithm algorithm = Algorithm.HMAC256(secret.getBytes(StandardCharsets.UTF_8));
 
@@ -86,14 +84,5 @@ public class JwtUtilAuth0Impl implements JwtUtil {
                 .role(role)
                 .email(email)
                 .build();
-    }
-
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Builder
-    private static class ParsedToken {
-        private String email;
-        private String role;
     }
 }

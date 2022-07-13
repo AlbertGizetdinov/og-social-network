@@ -28,12 +28,10 @@ spring.servlet.multipart.max-file-size=100MB
 files.storage.path=C:\tmp
 
 #REDIS configuration
-spring.redis.host=
-spring.redis.port=
-
+spring.redis.host=localhost
+spring.redis.port=6379
 
 #JWT token configuration
-jwt.token.secret=
-
+jwt.secret=example
 
 server.port=8080
