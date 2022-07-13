@@ -9,6 +9,7 @@ import ru.itis.og.model.enumeration.State;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -30,6 +31,9 @@ public class Post extends AbstractEntity {
 
     @Enumerated(value = EnumType.STRING)
     private State state;
+
+    @OneToMany(mappedBy = "post")
+    private Set<Reaction> reactions;
 
     @ManyToOne
     @JoinColumn(name = "account_id", referencedColumnName = "id")

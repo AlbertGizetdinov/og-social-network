@@ -35,8 +35,8 @@ public class PostController implements PostApi {
     }
 
     @Override
-    public ResponseEntity<?> deletePost(PostRequest postRequest) {
-        postService.deletePost(postRequest);
+    public ResponseEntity<?> deletePost(IdPageRequest idPageRequest) {
+        postService.deletePost(idPageRequest);
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 }

@@ -48,7 +48,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostResponse createPost(PostRequest postRequest) {
         Post post = Post.builder()
-                .createDate(Instant.now())
                 .title(postRequest.getTitle())
                 .text(postRequest.getText())
                 .updateDate(null)
@@ -76,8 +75,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void deletePost(PostRequest postRequest) {
-        Post post = postRepository.findById(UUID.fromString(postRequest.getId())).orElseThrow(PostNotFoundException::new);
+    public void deletePost(IdPageRequest idPageRequest) {
+        Post post = postRepository.findById(UUID.fromString(idPageRequest.getId())).orElseThrow(PostNotFoundException::new);
         post.setState(State.DELETED);
         postRepository.save(post);
     }

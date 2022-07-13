@@ -22,6 +22,8 @@ public interface OgConstant {
 
     String PRODUCT_CONTROLLER_PATH = API_PATH + "/products";
 
+    String REACTION_CONTROLLER_PATH = API_PATH + "/reactions";
+
     String QUESTION_CONTROLLER_PATH = API_PATH + "/questions";
     String QUESTION_ANSWER_CONTROLLER_PATH = "/{question-id}";
     String QUESTION_GET_ANSWERED_CONTROLLER_PATH = "/get-answered";
