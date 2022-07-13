@@ -55,6 +55,9 @@ public class Account extends AbstractEntity {
     @Column(nullable = false)
     private State state;
 
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
     @OneToMany(mappedBy = "following")
     private Set<Subscription> followers;
 
@@ -73,4 +76,18 @@ public class Account extends AbstractEntity {
     public enum State {
         CONFIRMED, NOT_CONFIRMED, DELETED, BANNED
     }
+
+    public enum Role {
+        USER, ADMIN
+    }
+
+    public boolean isNonBanned() {
+        return !this.state.equals(State.BANNED);
+    }
+
+    public boolean isConfirmed() {
+        return this.state.equals(State.CONFIRMED);
+    }
+
+
 }
