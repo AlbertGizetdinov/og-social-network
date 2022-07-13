@@ -1,0 +1,27 @@
+GET localhost:8080/api/v1/reactions
+Content-Type: application/json
+
+{
+  "page": 0,
+  "id": "b7ff8dac-c3d8-4e0d-b619-12d7583a45e8"
+}
+
+###
+
+POST localhost:8080/api/v1/reactions
+Content-Type: application/json
+
+{
+  "accountId": "5cac64df-4e47-4eb0-a5e9-d11df17ce34c",
+  "postId": "b7ff8dac-c3d8-4e0d-b619-12d7583a45e8",
+  "reactionType": "LIKE"
+}
+
+###
+
+DELETE localhost:8080/api/v1/reactions
+Content-Type: application/json
+
+{
+  "id": "913ba826-d7f0-439d-b32c-0be4161c6bb6"
+}

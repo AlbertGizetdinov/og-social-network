@@ -25,5 +25,5 @@ public interface PostApi {
     ResponseEntity<PostResponse> updatePost(@RequestBody PostRequest postRequest);
 
     @DeleteMapping(consumes = APPLICATION_JSON_VALUE)
-    ResponseEntity<?> deletePost(@RequestBody PostRequest postRequest);
+    ResponseEntity<?> deletePost(@RequestBody IdPageRequest idPageRequest);
 }
