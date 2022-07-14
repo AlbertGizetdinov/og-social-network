@@ -4,23 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.itis.og.model.Reaction.ReactionType;
 import ru.itis.og.validation.annotation.Uuid;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnswerRequest {
+public class ReactionRequest {
 
-    @Size(min = 10, max = 1000, message = "Min answer size is {min}, max is {max}")
-    @NotBlank
-    private String text;
-
-    @NotBlank
     @Uuid
     private String accountId;
+
+    @Uuid
+    private String postId;
+
+    private ReactionType reactionType;
 
 }

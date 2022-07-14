@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.itis.og.api.QuestionApi;
 import ru.itis.og.dto.request.AnswerRequest;
 import ru.itis.og.dto.request.QuestionRequest;
+import ru.itis.og.dto.response.AnswerResponse;
 import ru.itis.og.dto.response.QuestionResponse;
 import ru.itis.og.service.QuestionService;
 
@@ -26,9 +27,9 @@ public class QuestionController implements QuestionApi {
     }
 
     @Override
-    public ResponseEntity<QuestionResponse> answerQuestion(AnswerRequest answerRequest, UUID questionId) {
-        return ResponseEntity.status(HttpStatus.ACCEPTED)
-                .body(questionService.answerQuestion(answerRequest, questionId));
+    public ResponseEntity<AnswerResponse> addAnswer(AnswerRequest answerRequest, UUID questionId) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(questionService.addAnswer(answerRequest, questionId));
     }
 
     @Override
@@ -39,5 +40,10 @@ public class QuestionController implements QuestionApi {
     @Override
     public ResponseEntity<List<QuestionResponse>> getAllNotAnsweredQuestions() {
         return ResponseEntity.ok(questionService.getAllNotAnsweredQuestions());
+    }
+
+    @Override
+    public ResponseEntity<List<AnswerResponse>> getAllQuestionAnswers(UUID questionId) {
+        return ResponseEntity.ok(questionService.getAllQuestionAnswers(questionId));
     }
 }

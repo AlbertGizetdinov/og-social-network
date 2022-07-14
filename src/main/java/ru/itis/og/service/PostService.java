@@ -13,6 +13,6 @@ public interface PostService {
 
     PostResponse updatePost(PostRequest postRequest);
 
-    void deletePost(PostRequest postRequest);
+    void deletePost(IdPageRequest idPageRequest);
 
 }

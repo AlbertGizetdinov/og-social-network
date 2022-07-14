@@ -1,6 +1,7 @@
 package ru.itis.og.dto.response;
 
 import lombok.*;
+import ru.itis.og.model.AbstractEntity;
 import ru.itis.og.model.Question;
 
 import java.time.Instant;
@@ -17,9 +18,8 @@ public class QuestionResponse {
 
     private UUID id;
     private String text;
-    private String answer;
-    private UUID questioner;
-    private UUID answerer;
+    private List<UUID> answerIdList;
+    private UUID accountId;
     private Instant createdAt;
     private Boolean isAnonymous;
     private Boolean isAnswered;
@@ -28,9 +28,8 @@ public class QuestionResponse {
         return QuestionResponse.builder()
                 .id(question.getId())
                 .text(question.getText())
-                .answer(question.getAnswer())
-                .questioner(question.getQuestioner())
-                .answerer(question.getAnswerer())
+                .answerIdList(question.getAnswers().stream().map(AbstractEntity::getId).collect(Collectors.toList()))
+                .accountId(question.getAccountId())
                 .createdAt(question.getCreatedAt())
                 .isAnonymous(question.getIsAnonymous())
                 .isAnswered(question.getIsAnswered())

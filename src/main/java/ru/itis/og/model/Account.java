@@ -78,6 +78,9 @@ public class Account extends AbstractEntity implements UserDetails {
     @OneToMany(mappedBy = "account")
     private Set<FileInformation> files;
 
+    @OneToMany(mappedBy = "account")
+    private Set<Reaction> reactions;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(this.getRole());

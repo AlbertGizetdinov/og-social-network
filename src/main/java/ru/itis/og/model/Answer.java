@@ -6,12 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
-import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -20,8 +16,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "question")
-public class Question extends AbstractEntity {
+@Table(name = "answer")
+public class Answer extends AbstractEntity {
 
     @Column(nullable = false)
     private String text;
@@ -31,12 +27,7 @@ public class Question extends AbstractEntity {
     @Column(nullable = false, name = "created_at")
     private Instant createdAt;
 
-    @Column(nullable = false, name = "is_anonymous")
-    private Boolean isAnonymous;
-
-    @Column(nullable = false, name = "is_answered")
-    private Boolean isAnswered;
-
-    @OneToMany(mappedBy = "question")
-    private List<Answer> answers;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    private Question question;
 }

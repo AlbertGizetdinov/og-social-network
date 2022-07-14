@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.og.dto.request.AnswerRequest;
 import ru.itis.og.dto.request.QuestionRequest;
+import ru.itis.og.dto.response.AnswerResponse;
 import ru.itis.og.dto.response.QuestionResponse;
 
 import javax.validation.Valid;
@@ -20,12 +21,15 @@ public interface QuestionApi {
     ResponseEntity<QuestionResponse> askQuestion(@Valid @RequestBody QuestionRequest questionRequest);
 
     @PatchMapping(value = QUESTION_ANSWER_CONTROLLER_PATH, produces = APPLICATION_JSON_VALUE)
-    ResponseEntity<QuestionResponse> answerQuestion(@Valid @RequestBody AnswerRequest answerRequest,
-                                                    @PathVariable("question-id")UUID questionId);
+    ResponseEntity<AnswerResponse> addAnswer(@Valid @RequestBody AnswerRequest answerRequest,
+                                             @PathVariable("question-id")UUID questionId);
 
     @GetMapping(value = QUESTION_GET_ANSWERED_CONTROLLER_PATH)
     ResponseEntity<List<QuestionResponse>> getAllAnsweredQuestions();
 
     @GetMapping(value = QUESTION_GET_NOT_ANSWERED_CONTROLLER_PATH)
     ResponseEntity<List<QuestionResponse>> getAllNotAnsweredQuestions();
+
+    @GetMapping(value = QUESTION_ANSWER_CONTROLLER_PATH)
+    ResponseEntity<List<AnswerResponse>> getAllQuestionAnswers(@PathVariable("question-id")UUID questionId);
 }

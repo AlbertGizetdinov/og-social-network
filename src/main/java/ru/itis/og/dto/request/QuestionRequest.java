@@ -16,11 +16,12 @@ import javax.validation.constraints.Size;
 public class QuestionRequest {
 
     @Size(min = 10, max = 1000, message = "Min question size is {min}, max is {max}")
+    @NotBlank
     private String text;
 
     @NotBlank
     @Uuid
-    private String questionerId;
+    private String accountId;
 
     private Boolean isAnonymous;
 }
