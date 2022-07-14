@@ -10,4 +10,6 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
 
     Optional<Account> findAccountByConfirmCode(String confirmCode);
 
+    Optional<Account> findByEmail(String email);
+
 }

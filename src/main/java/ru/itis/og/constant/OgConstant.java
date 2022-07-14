@@ -8,7 +8,8 @@ public interface OgConstant {
 
     String API_PATH = "/api/v1";
     String SIGN_UP_CONTROLLER_PATH = API_PATH + "/signUp";
-    String CONFIRM_CODE_PATH = "/confirm/{code}";
+    String CONFIRM_PATH = "/confirm";
+    String CONFIRM_CODE_PATH = CONFIRM_PATH + "/{code}";
 
     String SUBSCRIPTION_CONTROLLER_PATH = API_PATH + "/subscriptions";
     String FOLLOWERS_PATH = "/followers";
@@ -17,8 +18,9 @@ public interface OgConstant {
     String POST_CONTROLLER_PATH = API_PATH + "/posts";
 
     String LINK_CONTROLLER_PATH = API_PATH + "/links";
+    String ACCOUNTS_PATH = API_PATH + "/accounts";
 
-    String DESCRIPTION_CONTROLLER_PATH = API_PATH + "/accounts/{account-id}/description";
+    String DESCRIPTION_CONTROLLER_PATH = ACCOUNTS_PATH + "/{account-id}/description";
 
     String PRODUCT_CONTROLLER_PATH = API_PATH + "/products";
 
@@ -31,6 +33,13 @@ public interface OgConstant {
 
     String FILE_CONTROLLER_PATH = API_PATH + "/files";
     String GET_FILE_PATH = "/{filename:.+}";
+
+    String AUTHENTICATION_URL = API_PATH + "/auth/token";
+    String USERNAME_PARAMETER = "email";
+    String AUTHORIZATION_HEADER_NAME = "AUTHORIZATION";
+    String BEARER = "Bearer ";
+    long ACCESS_TOKEN_EXPIRES_TIME = 60 * 60 * 1000; // 60 MINUTES
+    long REFRESH_TOKEN_EXPIRES_TIME = 24 * 60 * 60 * 1000; // 1 DAY
 
     int PAGEABLE_DEFAULT_SIZE = 5;
     int TIME_TO_EDIT_POST = 60 * 60 * 24; // 24 hours
