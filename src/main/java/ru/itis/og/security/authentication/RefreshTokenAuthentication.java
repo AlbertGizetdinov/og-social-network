@@ -26,7 +26,7 @@ public class RefreshTokenAuthentication implements Authentication {
 
     @Override
     public Object getDetails() {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override

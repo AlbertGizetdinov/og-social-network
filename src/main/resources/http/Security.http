@@ -1,0 +1,25 @@
+POST localhost:8080/api/v1/auth/token
+Content-Type: application/x-www-form-urlencoded
+
+email=test@mail.ru&password=qwerty007
+
+###
+
+GET localhost:8080/api/v1/links
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QG1haWwucnUiLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvdG9rZW4iLCJleHAiOjE2NTc4MTU4NjB9.aFbRKEAGzxHfQq4yzG6_NnPKE2cBNMKkadDHe3l2Oik
+Content-Type: application/json
+
+{
+  "page": 0,
+  "id": "2e29ae29-dc66-464c-a175-be5122f8348c"
+}
+
+###
+
+POST localhost:8080/api/v1/auth/token
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QG1haWwucnUiLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvdG9rZW4iLCJleHAiOjE2NTc4OTgzODJ9.McxYWCAeci_T4aJDpBKVcXZskwalSNAsuN5w_WbQC9Q
+
+###
+
+GET localhost:8080/logout
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QG1haWwucnUiLCJyb2xlIjoiQURNSU4iLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpL3YxL2F1dGgvdG9rZW4iLCJleHAiOjE2NTc4MTU4NjB9.aFbRKEAGzxHfQq4yzG6_NnPKE2cBNMKkadDHe3l2Oik
