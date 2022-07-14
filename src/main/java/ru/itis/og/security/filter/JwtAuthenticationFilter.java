@@ -3,13 +3,12 @@ package ru.itis.og.security.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
-import ru.itis.og.exception.OgServiceException;
+import ru.itis.og.exception.OgUnauthorizedException;
 import ru.itis.og.model.Account;
 import ru.itis.og.security.authentication.RefreshTokenAuthentication;
 import ru.itis.og.security.util.JwtUtil;
@@ -67,7 +66,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void unsuccessfulAuthentication(HttpServletRequest request,
                                               HttpServletResponse response,
                                               AuthenticationException failed) throws IOException, ServletException {
-        throw new OgServiceException(HttpStatus.UNAUTHORIZED, failed.getMessage());
-//        Todo: response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+        throw new OgUnauthorizedException(failed.getMessage());
     }
 }

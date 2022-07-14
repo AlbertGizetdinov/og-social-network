@@ -69,7 +69,6 @@ public class JwtUtilAuth0Impl implements JwtUtil {
         );
     }
 
-    // TODO
     private ParsedToken parse(String token) throws JWTVerificationException {
         Algorithm algorithm = Algorithm.HMAC256(secret.getBytes(StandardCharsets.UTF_8));
 

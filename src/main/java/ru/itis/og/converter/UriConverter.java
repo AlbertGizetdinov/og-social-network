@@ -1,7 +1,6 @@
 package ru.itis.og.converter;
 
-import org.springframework.http.HttpStatus;
-import ru.itis.og.exception.OgServiceException;
+import ru.itis.og.exception.OgBadRequestException;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
@@ -21,7 +20,7 @@ public class UriConverter implements AttributeConverter<URI, String> {
         try {
             return (string == null) ? null : new URI(string).normalize();
         } catch (URISyntaxException e) {
-            throw new OgServiceException(HttpStatus.BAD_REQUEST, e.getMessage());
+            throw new OgBadRequestException(e.getMessage());
         }
     }
 }

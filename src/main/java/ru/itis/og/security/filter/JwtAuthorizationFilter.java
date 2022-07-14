@@ -5,12 +5,11 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ru.itis.og.exception.OgServiceException;
+import ru.itis.og.exception.OgUnauthorizedException;
 import ru.itis.og.repository.BlacklistRepository;
 import ru.itis.og.security.util.JwtUtil;
 
@@ -51,8 +50,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                         response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
                     }
                 } else {
-//                    Todo: response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-                    throw new OgServiceException(HttpStatus.UNAUTHORIZED, "Token is expired or invalid");
+                    throw new OgUnauthorizedException("Token is expired or invalid");
                 }
             } else {
                 filterChain.doFilter(request, response);
