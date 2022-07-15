@@ -7,7 +7,7 @@ public interface OgConstant {
     // example: String USER_CONTROLLER_PATH = API_PATH + "/users";
 
     String API_PATH = "/api/v1";
-    String SIGN_UP_CONTROLLER_PATH = API_PATH + "/signUp";
+    String SIGN_UP_CONTROLLER_PATH = API_PATH + "/sign-up";
     String CONFIRM_PATH = "/confirm";
     String CONFIRM_CODE_PATH = CONFIRM_PATH + "/{code}";
 

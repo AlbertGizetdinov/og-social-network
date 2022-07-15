@@ -1,0 +1,33 @@
+POST localhost/api/v1/accounts/ae1e1a88-6b97-4544-892b-9c0f75275792/description
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZXBwYV8yMjhAbWFpbC5ydSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkvdjEvYXV0aC90b2tlbiIsImV4cCI6MTY1Nzg4MTYyOH0.D2Uk8Su0ZXLGcakoNa6XwhNnEryWXv0IPzwj10Jt3h0
+Content-Type: application/json
+
+{
+  "status": "hello world",
+  "hometown": "Kazan",
+  "country": "Russia",
+  "personInfo": "depressed, but well-dressed collega",
+  "personalWebsite" : "bolshiyeprogi.com",
+  "job" : "akvelon glava kompanii"
+}
+
+###
+
+PUT localhost/api/v1/accounts/ae1e1a88-6b97-4544-892b-9c0f75275792/description
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZXBwYV8yMjhAbWFpbC5ydSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkvdjEvYXV0aC90b2tlbiIsImV4cCI6MTY1Nzg4MTYyOH0.D2Uk8Su0ZXLGcakoNa6XwhNnEryWXv0IPzwj10Jt3h0
+Content-Type: application/json
+
+{
+  "status": "hello world",
+  "hometown": "Kazan",
+  "country": "Russia",
+  "personInfo": "depressed, but well-dressed collega",
+  "personalWebsite" : "bolshiyeprogi.com",
+  "job" : "akvelon glava kompanii",
+  "phoneNumber" : "89123456789"
+}
+
+###
+
+GET localhost/api/v1/accounts/ae1e1a88-6b97-4544-892b-9c0f75275792/description
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZXBwYV8yMjhAbWFpbC5ydSIsInJvbGUiOiJVU0VSIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkvdjEvYXV0aC90b2tlbiIsImV4cCI6MTY1Nzg4MTYyOH0.D2Uk8Su0ZXLGcakoNa6XwhNnEryWXv0IPzwj10Jt3h0

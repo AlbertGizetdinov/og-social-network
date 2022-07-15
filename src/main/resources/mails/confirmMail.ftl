@@ -21,7 +21,7 @@
 <h1>Hello, dear ${first_name} ${last_name}</h1>
 <p>You've created an account with ${email}</p>
 <p>To end the registration process, please click the button below</p>
-<a class="btn" href="http://localhost/confirm/${confirm_code}">Confirm your email</a>
+<a class="btn" href="http://localhost/api/v1/sign-up/confirm/${confirm_code}">Confirm your email</a>
 <p>A warm welcome,</p>
 <p>OG network</p>
 </body>

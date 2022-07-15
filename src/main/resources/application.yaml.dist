@@ -18,13 +18,18 @@ spring:
 
     mail:
         host: smtp.gmail.com
-        port: 587
+        port: 465
         username:
         password:
         properties:
+            mail.smtp.auth: true
             mail.smtp.starttls.enable: true
+            mail.smtp.host: smtp.mail.ru
+            mail.smtp.port: 465
             mail.smtp.allow8bitmime: true
-            mail.smtp.ssl.trust: smtp.gmail.com
+            mail.smtps.ssl.checkserveridentity: true
+            mail.smtps.ssl.trust: *
+            mail.smtp.ssl.enable: true
             mail.debug: true
 
     freemarker:

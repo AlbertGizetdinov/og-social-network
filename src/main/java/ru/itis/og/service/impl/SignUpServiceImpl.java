@@ -8,11 +8,13 @@ import ru.itis.og.dto.request.SignUpRequest;
 import ru.itis.og.dto.response.AccountResponse;
 import ru.itis.og.exception.AccountNotFoundException;
 import ru.itis.og.model.Account;
+import ru.itis.og.model.enumeration.Gender;
+import ru.itis.og.model.enumeration.Role;
 import ru.itis.og.repository.AccountRepository;
 import ru.itis.og.service.SignUpService;
+import ru.itis.og.util.DateParseUtil;
 import ru.itis.og.util.EmailUtil;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Service
@@ -28,13 +30,16 @@ public class SignUpServiceImpl implements SignUpService {
         Account account = Account.builder()
                 .firstname(signUpRequest.getFirstname())
                 .lastname(signUpRequest.getLastname())
+                .nickname(signUpRequest.getNickname())
                 .email(signUpRequest.getEmail())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
-                .gender(signUpRequest.getGender())
-                .birthday(Instant.parse(signUpRequest.getBirthday()))
+                .gender(Gender.valueOf(signUpRequest.getGender()))
+                .birthday(DateParseUtil.toInstantFromString(signUpRequest.getBirthday()))
                 .confirmCode(UUID.randomUUID().toString())
                 .state(Account.State.NOT_CONFIRMED)
+                .role(Role.USER)
                 .build();
+        System.out.println(account.getBirthday());
 
         emailUtil.sendConfirmMail(
                 account.getEmail(), "Для завершения регистрации нажмите кнопку в письме",

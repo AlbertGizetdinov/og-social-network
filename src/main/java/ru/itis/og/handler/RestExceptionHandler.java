@@ -90,14 +90,4 @@ public class RestExceptionHandler {
                         .message(exception.getMessage())
                         .build());
     }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ExceptionResponse> handleUnauthorized(Exception exception) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ExceptionResponse.builder()
-                        .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .message(exception.getMessage())
-                        .build());
-    }
 }

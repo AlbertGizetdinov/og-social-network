@@ -1,0 +1,19 @@
+POST localhost/api/v1/sign-up
+Content-Type: application/json
+
+{
+  "firstname": "ivan",
+  "lastname": "ivanov",
+  "nickname": "new_user_2",
+  "email": "test@mail.ru",
+  "password": "qwerty007",
+  "birthday": "2000-01-10",
+  "gender": "MALE"
+}
+
+###
+
+GET localhost/api/v1/sign-up/confirm/
+
+
+

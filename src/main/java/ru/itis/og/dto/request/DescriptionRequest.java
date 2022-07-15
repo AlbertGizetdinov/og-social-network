@@ -23,7 +23,7 @@ public class DescriptionRequest {
     @Size(max = 30)
     private String country;
 
-    @Pattern(message = "phone number is incorrect", regexp = "\\+79[0-9]{9}|8[0-9]{9}")
+    @Pattern(message = "phone number is incorrect", regexp = "\\+79[0-9]{9}|89[0-9]{9}")
     private String phoneNumber;
 
     @Size(max = 1000)

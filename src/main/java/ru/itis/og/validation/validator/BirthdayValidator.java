@@ -11,13 +11,13 @@ public class BirthdayValidator implements ConstraintValidator<Birthday, String> 
 
     @Override
     public boolean isValid(String birthday, ConstraintValidatorContext constraintValidatorContext) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             sdf.parse(birthday);
             return true;
         } catch (ParseException e) {
-            return false;
+            e.printStackTrace();
         }
-
+        return false;
     }
 }

@@ -11,13 +11,18 @@ spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.show-sql=true
 
 #JavaMailSender configuration
-spring.mail.host=smtp.gmail.com
-spring.mail.port=587
+spring.mail.host=smtp.mail.ru
+spring.mail.port=465
 spring.mail.username=
 spring.mail.password=
+spring.mail.properties.mail.smtp.auth=true
 spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.host=smtp.mail.ru
+spring.mail.properties.mail.smtp.port=465
 spring.mail.properties.mail.smtp.allow8bitmime=true
-spring.mail.properties.mail.smtp.ssl.trust=smtp.gmail.com
+spring.mail.properties.mail.smtps.ssl.checkserveridentity=true
+spring.mail.properties.mail.smtps.ssl.trust=*
+spring.mail.properties.mail.smtp.ssl.enable=true
 spring.mail.properties.mail.debug=true
 
 spring.freemarker.template-loader-path=classpath:/templates/,classpath:/mails/
